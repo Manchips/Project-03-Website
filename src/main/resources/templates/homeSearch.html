@@ -40,29 +40,39 @@
         <div class = "col-md-6 col-md-offset-3">
 
             <h1> Welcome to Dungeon and Dragons? </h1>
-            <form th:action="@{/login}" method="post">
+            <form th:action="@{/home}" method="post">
 
                 <!-- Login button its pretty basic but it should link to the login page  -->
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3">
-                            <input type="submit" name="login-submit" id="login-submit"
-                                   class="form-control btn btn-primary" value="Log In" />
+                            <input type="submit" name="edit-submit" id="edit-submit"
+                                   class="form-control btn btn-primary" value="Edit" />
                         </div>
                     </div>
                 </div>
             </form>
 
             <!-- Signup button also basic but it should link to the signup page, if possible change its color too -->
-            <form th:action="@{/signUp}" method="post">
+            <form th:action="@{/home}" method="post">
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="signUp-submit" id="singUp-submit"
-                               class="form-control btn btn-primary" value="Sign Up" />
+                        <input type="submit" name="create-submit" id="create-submit"
+                               class="form-control btn btn-primary" value="Create" />
                     </div>
                 </div>
             </div>
+            </form>
+            <form th:action="@{/home}" method="post">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input type="submit" name="show-submit" id="-submit"
+                                   class="form-control btn btn-primary" value="Show sheets" />
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
