@@ -9,4 +9,10 @@ public class IndexController {
     public String landingPage(Model model) {
         return "landingpage";
     }
+    @GetMapping("/home")
+    String home(Model model){
+
+        return "home";
+    }
+
 }
