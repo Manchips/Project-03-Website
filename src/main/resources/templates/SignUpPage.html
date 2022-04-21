@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Registration and Login App</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+</head>
+<body>
+
+<!--TODO Change background to either be a classic dnd character sheet or old paper
+    TODO Link other pages to the buttons
+    TODO Make sure that all navigation bars link back to this landing page, maybe also include the search bar up here as well?
+-->
+<!-- Navigation bar, will need real title at top for it thinking that this should just send users back to landing page -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">Dungeons and Dragons?</a>
+        </div>
+    </div>
+</nav>
+
+<br>
+<br>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6 col-md-offset-3">
+
+            <h1> Signup  </h1>
+            <form th:action="@{/login}" method="post">
+                <!-- Username bar -->
+                <div class = "form-group">
+                    <label for ="username"> Username </label> :
+                    <input type="text" class = "form-control" id ="username" name = "username"
+                           placeholder="Enter Username" autofocus="autofocus">
+                </div>
+                <!-- Password bar -->
+                <div class="form-group">
+                    <label for="password">Password</label>: <input type="password"
+                                                                   id="password" name="password" class="form-control"
+                                                                   placeholder="Enter Password" />
+                    <!-- Password confirm bar -->
+                    <div class="form-group">
+                        <label for="password">Password</label>: <input type="password"
+                                                                       id="passwordMatch" name="passwordMatch" class="form-control"
+                                                                       placeholder="Confrim Password" />
+                </div>
+                <!-- Signup button make sure it matches desgin of the button later on!-->
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input type="submit" name="signup-submit" id="signup-submit"
+                                   class="form-control btn btn-primary" value="SignUp" />
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
