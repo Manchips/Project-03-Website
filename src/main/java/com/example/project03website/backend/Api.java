@@ -3,17 +3,21 @@ package com.example.project03website.backend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(path="/api")
-public class Api {
+public class
+Api {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private SavedSheetRepository savedSheetRepository;
+    @Autowired
+    private UserSheetsRepository userSheetsRepository;
+    @Autowired
+    private SheetRepository sheetRepository;
 
     @PostMapping(path="/addUser")
     public @ResponseBody String addUser (@RequestParam String username, @RequestParam String password){
@@ -38,6 +42,21 @@ public class Api {
         User user = userRepository.findUserById(userId);
         userRepository.delete(user);
         return "redirect:/allUsers";
+    }
+
+    @GetMapping(path = "/findBySavedSheetId")
+    public @ResponseBody SavedSheets getSavedSheetId(@RequestParam Integer savedSheetId){
+        return savedSheetRepository.findDistinctBySavedSheetId(savedSheetId);
+    }
+
+    @GetMapping(path = "/findBySheetId")
+    public @ResponseBody Sheet getSheetId(@RequestParam Integer sheetId){
+        return sheetRepository.findDistinctBySheetId(sheetId);
+    }
+
+    @GetMapping(path = "/findByUserSheetsId")
+    public @ResponseBody UserSheets getUserSheetsId(@RequestParam Integer userSheetsId){
+        return userSheetsRepository.findDistinctByUserSheetsId(userSheetsId);
     }
 
 
