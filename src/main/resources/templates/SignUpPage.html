@@ -35,41 +35,30 @@
 <br>
 <br>
 <div class = "container">
+
     <div class = "row">
         <div class = "col-md-6 col-md-offset-3">
 
             <h1> Signup  </h1>
-            <form th:action="@{/login}" method="post">
-                <!-- Username bar -->
-                <div class = "form-group">
-                    <label for ="username"> Username </label> :
-                    <input type="text" class = "form-control" id ="username" name = "username"
-                           placeholder="Enter Username" autofocus="autofocus">
-                </div>
-                <!-- Password bar -->
-                <div class="form-group">
-                    <label for="password">Password</label>: <input type="password"
-                                                                   id="password" name="password" class="form-control"
-                                                                   placeholder="Enter Password" />
-                    <!-- Password confirm bar -->
-                    <div class="form-group">
-                        <label for="password">Password</label>: <input type="password"
-                                                                       id="passwordMatch" name="passwordMatch" class="form-control"
-                                                                       placeholder="Confrim Password" />
-                </div>
-                <!-- Signup button make sure it matches desgin of the button later on!-->
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <input type="submit" name="signup-submit" id="signup-submit"
-                                   class="form-control btn btn-primary" value="SignUp" />
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </form>
+            <div>
+                <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+                    <span><b></b>Don't have an account? Register Here!</b></span><br><br>
+                    <b>Name:</b> <input type="text" th:field="*{username}" placeholder="Enter Name" name="name">
+                    <br>
+                    <br>
+                    <b>Password:</b> <input type="password" th:field="*{password}" placeholder="Enter Password" name="password">
+                    <br><br>
+                    <button class = "btn btn-primary">
+                        Register
+                    </button>
+                </form>
+            </div>
+
         </div>
+
     </div>
+
+
 </div>
 </body>
 </html>
