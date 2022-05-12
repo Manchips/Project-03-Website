@@ -4,4 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface SheetRepository extends CrudRepository<Sheet,Integer>{
     Sheet findDistinctBySheetId(Integer sheetId);
+
+    Iterable<Sheet> findSheetBySheetId(Integer sheetId);
 }
