@@ -6,11 +6,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class IndexController {
+
+    @Autowired
+    Api api;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private SheetRepository sheetRepository;
+    @Autowired
+    private UserSheetsRepository userSheetsRepository;
+    @Autowired
+    private SavedSheetRepository savedSheetRepository;
 
     @GetMapping("/")
     public String landingPage(Model model) {
@@ -35,5 +46,18 @@ public class IndexController {
         return "login";
     }
 
+
+//    @GetMapping("/displayUserSheet")
+//    String displaySheet(@RequestParam Integer sheetId, @RequestParam Integer userId, Model model){
+//        Sheet sheet = api.getSheetId(sheetId);
+//        return "UserSheet";
+//    }
+
+    @GetMapping({"/displayUserSheet", "/"})
+    public ModelAndView displaySheet(@RequestParam(defaultValue = "6") Integer sheetId){
+        ModelAndView mav = new ModelAndView("UserSheet");
+        mav.addObject("userSheet",sheetRepository.findDistinctBySheetId(sheetId));
+        return mav;
+    }
 
 }
