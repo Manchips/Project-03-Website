@@ -7,11 +7,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller
 public class IndexController {
+
+    @Autowired
+    Api api;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private SheetRepository sheetRepository;
+    @Autowired
+    private UserSheetsRepository userSheetsRepository;
+    @Autowired
+    private SavedSheetRepository savedSheetRepository;
 
     public static final String BASE_URI = "http://localhost:9090/api/";
 
@@ -44,10 +56,20 @@ public class IndexController {
     String home(Model model){
         // Authenticated User Object
 //        List<User> listUsers = (List<User>) userRepository.findAll();
-
-
-
-
         return "homeSearch";
     }
+  
+//    @GetMapping("/displayUserSheet")
+//    String displaySheet(@RequestParam Integer sheetId, @RequestParam Integer userId, Model model){
+//        Sheet sheet = api.getSheetId(sheetId);
+//        return "UserSheet";
+//    }
+
+    @GetMapping({"/displayUserSheet", "/"})
+    public ModelAndView displaySheet(@RequestParam(defaultValue = "6") Integer sheetId){
+        ModelAndView mav = new ModelAndView("UserSheet");
+        mav.addObject("userSheet",sheetRepository.findDistinctBySheetId(sheetId));
+        return mav;
+    }
+
 }
