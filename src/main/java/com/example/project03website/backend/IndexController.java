@@ -6,15 +6,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class IndexController {
     @Autowired
     private UserRepository userRepository;
 
+    public static final String BASE_URI = "http://localhost:9090/api/";
+
+    User loggedInUser;
+
     @GetMapping("/")
     public String landingPage(Model model) {
-        return "landingpage";
+        return "index";
     }
     @GetMapping("/register")
     String register(Model model){
@@ -27,7 +32,7 @@ public class IndexController {
     String registerSubmit(@ModelAttribute("user") User user){
         userRepository.save(user);
 
-        return"landingPage";
+        return"homeSearch";
     }
 
     @GetMapping("/login")
@@ -35,5 +40,14 @@ public class IndexController {
         return "login";
     }
 
+    @RequestMapping("/homeSearch")
+    String home(Model model){
+        // Authenticated User Object
+//        List<User> listUsers = (List<User>) userRepository.findAll();
 
+
+
+
+        return "homeSearch";
+    }
 }

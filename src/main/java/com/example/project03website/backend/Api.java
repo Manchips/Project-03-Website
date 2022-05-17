@@ -16,10 +16,11 @@ public class Api {
     private UserRepository userRepository;
 
     @PostMapping(path="/addUser")
-    public @ResponseBody String addUser (@RequestParam String username, @RequestParam String password){
+    public @ResponseBody String addUser (@RequestParam String username, @RequestParam String password, @RequestParam String role){
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
+        user.setRole(role);
         userRepository.save(user);
         return "saved";
     }
