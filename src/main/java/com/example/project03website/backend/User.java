@@ -8,14 +8,15 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "userID")
+    @Column(name = "userID")
     private Integer id;
     private String username;
     private String password;
+    private String role;
 
 
 
-
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 
     public Integer getId() {
         return id;
@@ -42,5 +43,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
 
 }

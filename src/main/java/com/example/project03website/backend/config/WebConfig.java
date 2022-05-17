@@ -1,4 +1,4 @@
-package com.example.project03website.config;
+package com.example.project03website.backend.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
@@ -48,5 +48,10 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
+//        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/homeSearch").setViewName("homeSearch");
+
+
+
     }
 }
