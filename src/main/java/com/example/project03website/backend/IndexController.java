@@ -65,7 +65,7 @@ public class IndexController {
 //        return "UserSheet";
 //    }
 
-    @GetMapping({"/displayUserSheet", "/"})
+    @GetMapping("/displayUserSheet")
     public ModelAndView displaySheet(@RequestParam(defaultValue = "6") Integer sheetId){
         ModelAndView mav = new ModelAndView("UserSheet");
         mav.addObject("userSheet",sheetRepository.findDistinctBySheetId(sheetId));
